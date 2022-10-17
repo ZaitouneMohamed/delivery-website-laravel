@@ -1,7 +1,19 @@
 <?php
 
+use App\Models\order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\user\homeController;
+use App\Http\Controllers\admin\foodController;
+use App\Http\Controllers\user\FoodsController;
+use App\Http\Controllers\user\OrderController;
+use App\Http\Controllers\admin\OrdersController;
+use App\Http\Controllers\admin\adminhomeController;
+use App\Http\Controllers\admin\CategorieController;
+use App\Http\Controllers\user\categoriesController;
+use App\Http\Controllers\admin\manageadminController;
+use App\Http\Controllers\livreur\livreurOrdersController;
+use App\Http\Controllers\user\homeController as UserHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +26,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // ADMIN ROUTES (start here)
 Route::prefix('admin')->middleware(['IsAdmin'])->group(function(){
