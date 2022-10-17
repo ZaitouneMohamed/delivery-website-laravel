@@ -16,7 +16,7 @@ class manageadminController extends Controller
      */
     public function index()
     {
-        $admins=User::all()->where('is_admin','1');
+        $admins=User::all()->where('role','1');
         return view('admin.manage_admin.home',compact('admins'));
     }
 
@@ -47,7 +47,7 @@ class manageadminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' =>Hash::make($request->password),
-            'is_admin' => 1
+            'role' => 1
         ]);
         return redirect()->route('admin.home')->with([
             'success' => "l'admin est bien ajouter"

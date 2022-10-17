@@ -33,13 +33,13 @@
                 @endif --}}
             </li>
             @if (auth()->check())
-                @if (auth()->user()->is_admin == 0 )
+                @if (auth()->user()->role == 0 )
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('add_order.index')}}">my orders</a>
                     </li>
                 @endif
             @endif
-            @if (!auth()->check() || auth()->user()->is_admin == 0)    
+            @if (!auth()->check() || auth()->user()->role == 0)    
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('message')}}">messages</a>
                 </li>
@@ -66,7 +66,7 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                        @if (Auth::user()->is_admin==1)
+                        @if (Auth::user()->role==1)
                             <a class="dropdown-item" href="{{ url('/admin') }}">
                                 admin panel
                             </a>

@@ -38,11 +38,6 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">feautured :</label>
-                yes : <input type="radio"  value="yes" name="feautured" checked>
-                No : <input type="radio"  value="no" name="feautured">
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">active :</label>
                 yes : <input type="radio"  value="yes" name="active" checked>
                 no : <input type="radio" value="no" name="active">

@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Admin</b><i>panel</i>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -130,7 +130,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -153,7 +153,7 @@ return [
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' =>'dark',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +194,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-blue navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -212,13 +212,13 @@ return [
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_auto_size' => true,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
-    'sidebar_nav_animation_speed' => 300,
+    'sidebar_nav_animation_speed' => 200,
 
     /*
     |--------------------------------------------------------------------------
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -292,97 +292,124 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Dashboard',
+            'url'  => 'admin',
+            'icon' => 'fas  fa-dashboard (alias)',
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        ['header' => 'Parametres'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'add new admin',
+            'url'  => 'admin\manage\create',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'user home',
+            'url'  => '/',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+
+        [
+            'text'    => 'Admin liste',
+            'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'liste of Admins',
+                    'url'  => 'admin\manage',
+                    'icon'    => 'fas fa-fw fa-list',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Create',
+                    'url'  => 'admin\manage\create',
+                    'icon'    => 'fas fa-fw fa-user-plus',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Categories',
+            'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
+            'submenu' => [
+                [
+                    'text' => 'liste of categories',
+                    'url'  => 'admin\categorie',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Create',
+                    'url'  => 'admin\categorie\create',
+                    'icon'    => 'fas fa-fw fa-user-plus',
+                ],
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'    => 'Food',
+            'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
+            'submenu' => [
+                [
+                    'text' => 'liste of foods',
+                    'url'  => 'admin\food',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Create',
+                    'url'  => 'admin\food\create',
+                    'icon'    => 'fas fa-fw fa-user-plus',
+                ],
+            ],
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'    => 'orders',
+            'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
+            'submenu' => [
+                [
+                    'text' => 'untacked orders',
+                    'url'  => 'admin\manage_order/create',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'taked orders',
+                    'url'  => 'admin\manage_order',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'returned orders',
+                    'url'  => 'admin\returned_orders',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'All orders',
+                    'url'  => 'admin\manage_order\create',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+            ],
         ],
+        [
+            'text'    => 'messages',
+            'icon'    => 'fa fa-envelope',
+            'submenu' => [
+                [
+                    'text' => 'unreaded messages',
+                    'url'  => 'admin\unreaded_messages',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'readed messages',
+                    'url'  => 'admin\readed_messages',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+            ],
+        ],
+
     ],
 
     /*

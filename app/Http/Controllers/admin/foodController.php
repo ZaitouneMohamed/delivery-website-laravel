@@ -16,7 +16,7 @@ class foodController extends Controller
      */
     public function index()
     {
-        $foods=food::paginate(5);
+        $foods=food::orderBy('id','desc')->paginate(5);
         return view('admin.manage_food.home',compact('foods'));
     }
 
@@ -58,7 +58,6 @@ class foodController extends Controller
             'price' => $request->price,
             'image' => $image_name,
             'categorie_id' => $request->categorie,
-            'feautured'=> $request->feautured,
             'active' => $request->active
         ]);
         return redirect()->route('food.index')->with([
@@ -122,7 +121,6 @@ class foodController extends Controller
             'price' => $request->price,
             'image' => $image_name,
             'categorie_id' => $request->categorie,
-            'feautured'=> $request->feautured,
             'active' => $request->active
         ]);
         return redirect()->route('food.index')->with([

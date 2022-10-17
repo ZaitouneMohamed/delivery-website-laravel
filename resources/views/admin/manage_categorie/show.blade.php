@@ -8,11 +8,6 @@
         <h4 class="">{{$categorie->description}}</h4>
         <div class="card-body">
             <h5 class="card-title">{{$categorie->title}}</h5>
-            @if ($categorie->feautured=="yes")
-                <h4><button class="btn btn-success">feaurured</button></h4>
-            @else
-                <h4><button class="btn btn-danger">feaurured</button></h4>
-            @endif
             @if ($categorie->active=="yes")
                 <h4><button class="btn btn-success">active</button></h4>
             @else

@@ -33,16 +33,10 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">categorie :</label>
                 <select name="categorie" id="">
-
                     @foreach ($categorie as $item)
                         <option value="{{$item->id}}">{{$item->title}}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">feautured :</label>
-                yes : <input type="radio"  value="yes" name="feautured" checked>
-                No : <input type="radio"  value="no" name="feautured">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">active :</label>

@@ -22,11 +22,6 @@
                         <h5 class="card-title">{{$food->title}}</h5>
                         <p class="card-text">{{$food->description}}</p>
                         <p class="card-text">{{$food->price}}$</p>
-                        @if ($food->feautured=="yes")
-                            <h4><button class="btn btn-success">feaurured</button></h4>
-                        @else
-                            <h4><button class="btn btn-danger">feaurured</button></h4>
-                        @endif
                         @if ($food->active=="yes")
                             <h4><button class="btn btn-success">active</button></h4>
                         @else

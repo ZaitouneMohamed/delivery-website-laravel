@@ -22,7 +22,7 @@ class CategorieController extends Controller
 
     public function index()
     {
-        $categories=Categorie::paginate(5);
+        $categories=Categorie::orderBy('id','desc')->paginate(5);
         return view('admin.manage_categorie.home',compact('categories'));
     }
 
@@ -54,7 +54,6 @@ class CategorieController extends Controller
         Categorie::create([
             'title' => $request->title,
             'image' => $image_name,
-            'feautured'=> $request->feautured,
             'active' => $request->active,
             'description' => $request->description
         ]);
@@ -114,7 +113,6 @@ class CategorieController extends Controller
         $categorie->update([
             'title' => $request->title,
             'image' => $image_name,
-            'feautured'=> $request->feautured,
             'active' => $request->active,
             'description' => $request->description
         ]);

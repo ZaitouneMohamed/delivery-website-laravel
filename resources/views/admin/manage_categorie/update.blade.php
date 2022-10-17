@@ -24,16 +24,6 @@
                     <input type="file" class="form-control" name="image" >
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">feautured :</label>
-                    @if ($categorie->feautured=="yes")
-                        yes : <input type="radio"  value="yes" name="feautured" checked>
-                        No : <input type="radio"  value="no" name="feautured">
-                    @else
-                        yes : <input type="radio"  value="yes" name="feautured" >
-                        No : <input type="radio"  value="no" name="feautured" checked>
-                    @endif
-                </div>
-                <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">active :</label>
                     @if ($categorie->active=="yes")
                         yes : <input type="radio"  value="yes" name="active" checked>
