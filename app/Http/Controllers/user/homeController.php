@@ -4,7 +4,7 @@ namespace App\Http\Controllers\user;
 
 
 use App\Models\order;
-use App\Models\Messages;
+use App\Models\message;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +39,7 @@ class homeController extends Controller
                 'phone' => 'required',
                 'content' => 'required'
             ]);
-            Messages::create([
+            message::create([
                 'content'=>$request->content,
                 'phone'=>$request->phone,
                 'name'=>$request->name,
@@ -50,7 +50,7 @@ class homeController extends Controller
             $request->validate([
                 'content' => 'required'
             ]);
-            Messages::create([
+            message::create([
                 'content'=>$request->content,
                 'phone'=>auth()->user()->phone,
                 'name'=>auth()->user()->name,

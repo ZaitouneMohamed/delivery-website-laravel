@@ -53,7 +53,7 @@ class OrderController extends Controller
         $food=food::find($request->id);
         $total= $food->price * $request->qty;
         if ($request->has('adresse')) {
-            $user = User::find(Auth()->user()->id);
+            $user=User::find(Auth()->user()->id);
             $user->update([
                 'adresse'=>$request->adresse,
                 'phone'=>$request->phone
@@ -65,7 +65,7 @@ class OrderController extends Controller
             'qty'=>$request->qty,
             'total'=>$total,
             'order_date'=>now(),
-            'livreur_id'=>null,
+            'livreur_id'=>Null,
             'status'=>'on load',
             'confirmation'=>'nothing'
         ]);

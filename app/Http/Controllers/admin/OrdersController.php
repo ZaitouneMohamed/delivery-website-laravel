@@ -40,15 +40,15 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $order_id=$request->order_id;
-        $order=order::find($order_id);
+        $order=order::find($request->order_id);
         $livreur=order::all()->where('livreur_id',$request->livreur_id);
         $order->update([
             'confirmation'=>"wait for answer",
             'livreur_id'=>$request->livreur_id
         ]);
         return view('admin.manage_orders.request')->with([
-            'success' => "you send order number : ". $order_id . "to livreur : .$livreur.wait for confirmation"
+            // 'success' => "you send order number : ". $order_id . "to livreur : .$livreur.wait for confirmation"
+            'success' => "you send order number : wait for confirmation"
         ]);
     }
 
@@ -61,7 +61,7 @@ class OrdersController extends Controller
     public function show($id)
     {
         $order=order::find($id);
-        $livreurs=User::all()->where('is_admin',2)->where('adresse',$order->user->adresse);
+        $livreurs=User::all()->where('role',2)->where('adresse',$order->user->adresse);
         return view ('admin.manage_orders.show',compact('order','livreurs'));
     }
 

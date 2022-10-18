@@ -51,7 +51,7 @@
   </div>
 <br><br><br>
 <div class="container text-center">
-    <h1>{{__("message.our_categorie")}}</h1>
+    <h1>Our Categorie</h1>
     <div class="row">
         @foreach ($categories as $item)
             <div class="col">

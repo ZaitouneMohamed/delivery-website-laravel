@@ -24,6 +24,7 @@
     @endif
         <form action="{{route('send_message')}}" method="post">
             @csrf
+            @method('post')
             <center>
                 <h1 class="center">send us a message</h1>
                 @if (!auth()->check())
