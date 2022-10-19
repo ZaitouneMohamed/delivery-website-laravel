@@ -401,6 +401,7 @@ return [
                     'text' => 'unreaded messages',
                     'url'  => 'admin\unreaded_messages',
                     'icon'    => 'fas fa-fw fa-list',
+                    'label'=> 4,
                 ],
                 [
                     'text' => 'readed messages',
