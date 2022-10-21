@@ -89,7 +89,7 @@ class manageadminController extends Controller
         // dd($request->all());
         $admin = user::find($id);
         $request->validate([
-            'name' => "required|min:8",
+            'name' => "required",
             'email' => "required|email",
         ]);
         $admin->update([

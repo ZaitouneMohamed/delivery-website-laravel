@@ -42,7 +42,7 @@
                                 <h2>orders</h2>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                             <a href="{{url('admin/orders')}}" class="small-box-footer">
                                 see more <i class="fas fa-arrow-circle-right"></i>
