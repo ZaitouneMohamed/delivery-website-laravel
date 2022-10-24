@@ -43,14 +43,12 @@ class adminhomeController extends Controller
 
     public function readed_messages(){
         $messages=DB::table('messages')->where('statue',1)->orderBy('created_at','desc')->paginate(5);
-        $count=DB::table('messages')->where('statue',1)->count();
-        return view('admin.messages.readed',compact('messages','count'));
+        return view('admin.messages.readed',compact('messages'));
     }
 
     public function unreaded_messages(){
         $messages=DB::table('messages')->where('statue',0)->paginate(5);
-        $count=DB::table('messages')->where('statue',0)->count();
-        return view('admin.messages.unreaded',compact('messages','count'));
+        return view('admin.messages.unreaded',compact('messages',));
     }
 
     public function show_message($id){

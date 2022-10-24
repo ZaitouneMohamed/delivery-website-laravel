@@ -49,7 +49,7 @@ class manageadminController extends Controller
             'password' =>Hash::make($request->password),
             'role' => 1
         ]);
-        return redirect()->route('admin.home')->with([
+        return redirect()->route('manage.index')->with([
             'success' => "l'admin est bien ajouter"
         ]);
     }
