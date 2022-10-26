@@ -11,69 +11,63 @@
         {{ session('message') }}
     </div>
 @endif
-    <div class="container justify-content-center">
-        <h1 class="text-center text-uppercase">your orders</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">food</th>
-                    {{-- <th scope="col">image</th> --}}
-                    <th scope="col">price</th>
-                    <th scope="col">qty</th>
-                    <th scope="col">total</th>
-                    <th scope="col">statue</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orders as $item)
+
+<section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white">{{auth()->user()->name}} Orders</h1>
+        </div>
+        <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+            <table class="table-auto w-full text-left whitespace-no-wrap">
+                <thead>
                     <tr>
-                        <th scope="row">{{$item->food->title}} <input type="hidden" name="order_id" value="{{$item->id}}"></th>
-                        <td>{{$item->food->price}}$</td>
-                        <td>{{$item->qty}}</td>
-                        <td>{{$item->total}}$</td>
-                        <td>
-                            @if ($item->status == "on load")
-                                <p class="btn btn-info">{{$item->status}}</p>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">food</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">order date</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">qty</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">price</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">status</th>
+                        <th class="w-10 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tr rounded-br">action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($orders as $item)
+                    <tr>
+                        <td class="px-4 py-3">{{$item->food->title}} <input type="hidden" name="order_id" value="{{$item->id}}"></td>
+                        <td class="px-4 py-3">{{$item->created_at}}</td>
+                        <td class="px-4 py-3">{{$item->qty}}</td>
+                        <td class="px-4 py-3">{{$item->food->price}}$</td>
+                        <td class="px-4 py-3">
+                            {{$item->status}}
+                            {{-- @if ($item->status == "on load")
+                            <p class="btn btn-info">{{$item->status}}</p>
                             @endif
                             @if ($item->status == "on road")
-                                <p class="btn btn-primary">{{$item->status}}</p>
+                            <p class="btn btn-primary">{{$item->status}}</p>
                             @endif
                             @if ($item->status == "received")
-                                <p class="btn btn-success">{{$item->status}}</p>
+                            <p class="btn btn-success">{{$item->status}}</p>
                             @endif
                             @if ($item->status == "returned")
-                                <p class="btn btn-danger">{{$item->status}}</p>
-                            @endif
+                            <p class="btn btn-danger">{{$item->status}}</p>
+                            @endif --}}
                         </td>
-                        @if ($item->status == "on load")
-                            <td>
-                                <a href="{{route('add_order.edit',$item->id)}}" class="btn btn-primary">update</a>
-                                <form action="{{route('add_order.destroy',$item->id)}}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit" value="delete" class="btn btn-danger">
-                                </form>
-                            </td>
-                        @endif
-                        @if ($item->status == "returned")
-                            <td>
-                                <a href="{{route('add_order.show',$item->id)}}" class="btn btn-primary">find why</a>
-                                <form action="{{route('add_order.destroy',$item->id)}}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit" value="delete" class="btn btn-danger">
-                                </form>
-                            </td>
-                        @endif
+                        <td class="px-4 py-3">
+                            <div class="flex">
+                                <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <button type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                            </div>
+                        </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="container">
-            {{$orders->links()}}
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+</section>
 
 @endsection
 

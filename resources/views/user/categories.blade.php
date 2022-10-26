@@ -1,7 +1,7 @@
 @extends('user.layout.layout')
 
 @section('main')
-@if (session('error'))
+@if (session('  error'))
     <div class="alert alert-danger" role="alert">
         {{session('error')}}
     </div>
@@ -11,7 +11,7 @@
         {{ session('message') }}
     </div>
 @endif
-<div class="container text-center">
+{{-- <div class="container text-center">
     <div class="row row-cols-3">
         @foreach ($categories as $categorie)
 <div class="col">
@@ -27,6 +27,6 @@
         @endforeach
 
     </div>
-</div>
-
+</div> --}}
+@include('user.sections.categories')
 @endsection

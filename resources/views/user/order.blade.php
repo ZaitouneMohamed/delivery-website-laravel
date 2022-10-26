@@ -11,14 +11,10 @@
         {{ session('message') }}
     </div>
 @endif
-    <div class="container ">
+    {{-- <div class="container ">
         <h1 class="text-center text-uppercase">Food Order Card</h1>
         <br>
         <br>
-        {{-- <div class="row"> --}}
-            {{-- <div class="col-sm-6 col-md-6 col-lg-4"> --}}
-
-                    {{-- @method('post') --}}
                     <div class="d-flex justify-content-center">
                 <div class="card ">
                     <form action="{{route('add_order.store')}}" method="post">
@@ -48,11 +44,12 @@
                     </form>
                 </div>
             </div>
-            {{-- </div> --}}
-        {{-- </div> --}}
-    </div>
+    </div> --}}
+    @include('user.sections.order')
 
 @endsection
+
+
 @section('js')
     <script>
         add_btn=document.getElementById('add')

@@ -19,7 +19,9 @@ class FoodsController extends Controller
     public function speacial_food($id) {
         $categories = Categorie::all();
         $foods = food::all()->where('categorie_id','like',$id);
-        return view ('user.speacial_food',compact('foods','categories'));
+        // $categorie_name = Categorie::where('id','=',$id)->get($id);
+        $categorie_name=DB::table('categories')->where('id', $id)->first();
+        return view ('user.speacial_food',compact('foods','categories','categorie_name'));
     }
 
     public function search(Request $request){
@@ -28,6 +30,6 @@ class FoodsController extends Controller
         $foods = DB::table('food')->where('title','LIKE','%'.$key.'%')
                     ->get();
 
-        return view ('user.search',compact('foods','categories'));
+        return view ('user.search',compact('foods','categories','key'));
     }
 }

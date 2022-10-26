@@ -12,7 +12,7 @@
         {{ session('message') }}
     </div>
 @endif
-<div class="container text-center">
+{{-- <div class="container text-center">
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -47,7 +47,8 @@
                     </div>
             </center>
             <input type="submit" value="send" class="btn btn-primary">
-        </form>
-</div>
+        </div>
+    </form> --}}
+    @include('user.sections.message')
 
 @endsection

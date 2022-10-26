@@ -11,9 +11,10 @@
         {{ session('message') }}
     </div>
 @endif
-<div class="container text-center">
+
+@include('user.sections.search')
+{{-- <div class="container text-center">
     <div class="row row-cols-3">
-        {{-- <h1>{{$key}}</h1> --}}
                 @foreach ($foods as $categorie)
                     <div class="col">
                         <div class="card" style="width: 18rem;">
@@ -26,7 +27,7 @@
                                         <a href="{{route('add_order.show',$categorie->id)}}" class="btn btn-primary">order now</a>
                                     @endif
                                 @else
-                                    <a href="{{route('add_order.show',$categorie->id)}}" class="btn btn-primary">order now</a>  
+                                    <a href="{{route('add_order.show',$categorie->id)}}" class="btn btn-primary">order now</a>
                                 @endif
                             </div>
                         </div>
@@ -34,6 +35,6 @@
                 @endforeach
 
     </div>
-</div>
+</div> --}}
 
 @endsection

@@ -13,10 +13,13 @@
 @endif
 @include('user.sections.home.header')
 <!-- Background image -->
-<br><br><br>
 @include('user.sections.home.categories')
 
-<br><br><br><br>
+@include('user.sections.home.about')
+
+@include('user.sections.home.reviews')
+
+{{-- <br><br><br><br>
 <div class="container text-center">
     <h1>our best food</h1>
     <div class="row">
@@ -35,7 +38,7 @@
     <br>
     <a href="{{route('user.categories')}}" class="btn btn-primary">see all categories</a>
 </div>
-
+ --}}
 
 @endsection
 
