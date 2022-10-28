@@ -52,7 +52,7 @@
 
 @section('js')
     <script>
-        add_btn=document.getElementById('add')
+        // add_btn=document.getElementById('add')
         a=1;
         function add(){
             a++
@@ -62,8 +62,8 @@
             if(a==1){
                 document.getElementById('qty')=1;
             }
-                a--;
-                document.getElementById('qty').value=a;
+            a--;
+            document.getElementById('qty').value=a;
         }
     </script>
 @endsection

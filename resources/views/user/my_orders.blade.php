@@ -25,6 +25,7 @@
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">order date</th>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">qty</th>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">price</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Total</th>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">status</th>
                         <th class="w-10 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tr rounded-br">action</th>
                     </tr>
@@ -36,20 +37,9 @@
                         <td class="px-4 py-3">{{$item->created_at}}</td>
                         <td class="px-4 py-3">{{$item->qty}}</td>
                         <td class="px-4 py-3">{{$item->food->price}}$</td>
+                        <td class="px-4 py-3">{{$item->total}}$</td>
                         <td class="px-4 py-3">
                             {{$item->status}}
-                            {{-- @if ($item->status == "on load")
-                            <p class="btn btn-info">{{$item->status}}</p>
-                            @endif
-                            @if ($item->status == "on road")
-                            <p class="btn btn-primary">{{$item->status}}</p>
-                            @endif
-                            @if ($item->status == "received")
-                            <p class="btn btn-success">{{$item->status}}</p>
-                            @endif
-                            @if ($item->status == "returned")
-                            <p class="btn btn-danger">{{$item->status}}</p>
-                            @endif --}}
                         </td>
                         <td class="px-4 py-3">
                             <div class="flex">

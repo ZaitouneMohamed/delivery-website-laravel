@@ -1,5 +1,13 @@
 @extends('user.layout.layout')
 
+@section('style')
+    <style>
+        #div{
+            height: calc(100vh - 140px)
+        }
+    </style>
+@endsection
+
 @section('main')
 
 @if (session('error'))
