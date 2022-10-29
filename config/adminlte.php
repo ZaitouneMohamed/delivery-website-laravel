@@ -336,6 +336,23 @@ return [
             ],
         ],
         [
+            'text'    => 'livreurs liste',
+            'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
+            'submenu' => [
+                [
+                    'text' => 'list of livreurs',
+                    'url'  => 'admin\manage_livreurs',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Create',
+                    'url'  => 'admin\manage_livreurs\create',
+                    'icon'    => 'fas fa-fw fa-user-plus',
+                ],
+            ],
+        ],
+
+        [
             'text'    => 'Categories',
             'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
             'submenu' => [
@@ -372,24 +389,24 @@ return [
             'icon'    => 'fas fa-fw fa-arrow-alt-circle-right',
             'submenu' => [
                 [
+                    'text' => 'all orders',
+                    'url'  => 'admin\manage_order',
+                    'icon'    => 'fas fa-fw fa-list',
+                ],
+                [
                     'text' => 'untacked orders',
                     'url'  => 'admin\manage_order/create',
                     'icon'    => 'fas fa-fw fa-list',
                 ],
                 [
                     'text' => 'taked orders',
-                    'url'  => 'admin\manage_order',
+                    'url'  => 'admin\tacked_orders',
                     'icon'    => 'fas fa-fw fa-list',
                 ],
                 [
                     'text' => 'returned orders',
                     'url'  => 'admin\returned_orders',
                     'icon'    => 'fas fa-fw fa-list',
-                ],
-                [
-                    'text' => 'All orders',
-                    'url'  => 'admin\manage_order\create',
-                    'icon' => 'fas fa-fw fa-list',
                 ],
             ],
         ],
@@ -407,10 +424,9 @@ return [
                     'text' => 'readed messages',
                     'url'  => 'admin\readed_messages',
                     'icon'    => 'fas fa-fw fa-list',
-                ],
+                ]
             ],
         ],
-
     ],
 
     /*

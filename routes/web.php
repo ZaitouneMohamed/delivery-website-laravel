@@ -8,12 +8,15 @@ use App\Http\Controllers\admin\foodController;
 use App\Http\Controllers\user\FoodsController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\admin\OrdersController;
+use App\Http\Controllers\admin\livreurController;
 use App\Http\Controllers\admin\adminhomeController;
 use App\Http\Controllers\admin\CategorieController;
+use App\Http\Controllers\livreur\profileController;
 use App\Http\Controllers\user\categoriesController;
 use App\Http\Controllers\admin\manageadminController;
 use App\Http\Controllers\livreur\livreurOrdersController;
 use App\Http\Controllers\user\homeController as UserHomeController;
+use App\Http\Controllers\user\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +44,9 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function(){
     Route::resource('/categorie', CategorieController::class);
     Route::resource('/food', foodController::class);
     Route::resource('/manage_order', OrdersController::class);
+    Route::resource('/manage_livreurs', livreurController::class);
     Route::get('/returned_orders', [OrdersController::class,'returned_orders'])->name('returned_orders');
+    Route::get('/tacked_orders', [OrdersController::class,'tacked_orders'])->name('tacked_orders');
     Route::get('/orders/onroad/{id}', [OrdersController::class,'onroad'])->name('onroad');
     Route::get('/orders/received/{id}', [OrdersController::class,'received'])->name('received');
     Route::get('/settings', [adminHomeController::class, 'profile'])->name('profile');
@@ -59,6 +64,7 @@ Route::prefix('livreur')->middleware(['livreur'])->group(function(){
             return view('livreur.home');
         })->name('livreur.home');
         Route::resource('/orders', livreurOrdersController::class);
+        Route::resource('/profile', profileController::class);
         Route::get('/livreur_request', [livreurOrdersController::class , 'request'])->name('livreur_orders_request');
         Route::get('/accepte_request/{id}', [livreurOrdersController::class , 'confirm_request'])->name('livreur_accepte_request');
         Route::get('/refuse_request/{id}', [livreurOrdersController::class , 'refuse_request'])->name('livreur_refuse_order');
@@ -75,6 +81,7 @@ Route::prefix('livreur')->middleware(['livreur'])->group(function(){
     Route::get('/all_foods', [FoodsController::class,'index'])->name('user.foods');
     Route::get('/search', [FoodsController::class,'search'])->name('user.search_foods');
     Route::resource('/add_order', OrderController::class)->middleware('auth');
+    Route::resource('/my_profile', UserProfileController::class);
     Route::get('/new_order/{id}', [OrderController::class,'add_order'])->middleware('auth')->name("new_order");
     Route::get('/message', [homeController::class,'message'])->name('message');
     Route::post('/send_message', [homeController::class,'send_message'])->name('send_message');

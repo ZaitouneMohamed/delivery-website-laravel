@@ -12,7 +12,7 @@
     </div>
 @endif
 
-@include('user.sections.all_food')
+@include('user.sections.update_profile')
 
 
 @endsection

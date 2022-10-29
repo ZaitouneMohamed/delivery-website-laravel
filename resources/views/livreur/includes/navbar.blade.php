@@ -15,8 +15,6 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('livreur_orders_request')}}">request</a>
             </li>
-            <li class="nav-item">
-            </li>
 
 
             <li class="nav-item dropdown">
@@ -27,9 +25,11 @@
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="{{route('profile.index')}}" class="dropdown-item">profile</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>

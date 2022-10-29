@@ -17,6 +17,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
+        // all orders
         $orders=order::orderBy('created_at','desc')->paginate(5);
         return view('admin.manage_orders.orders_list',compact('orders'));
     }
@@ -28,8 +29,9 @@ class OrdersController extends Controller
      */
     public function create()
     {
+        // untacked orders
         $orders=order::where('confirmation','=','nothing')->paginate(5);
-        return view('admin.manage_orders.request',compact('orders'));
+        return view('admin.manage_orders.untacked',compact('orders'));
     }
 
     /**
@@ -40,15 +42,14 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        // give order to a speacific livreur
         $order=order::find($request->order_id);
-        $livreur=order::all()->where('livreur_id',$request->livreur_id);
         $order->update([
             'confirmation'=>"wait for answer",
             'livreur_id'=>$request->livreur_id
         ]);
         return view('admin.manage_orders.request')->with([
-            // 'success' => "you send order number : ". $order_id . "to livreur : .$livreur.wait for confirmation"
-            'success' => "you send order number : wait for confirmation"
+            'success' => "wait for confirmation"
         ]);
     }
 
@@ -60,6 +61,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
+        // show order
         $order=order::find($id);
         $livreurs=User::all()->where('role',2)->where('adresse',$order->user->adresse);
         return view ('admin.manage_orders.show',compact('order','livreurs'));
@@ -94,8 +96,16 @@ class OrdersController extends Controller
 
     public function returned_orders()
     {
+        // returned orders
         $orders=order::where('confirmation','=','returned')->paginate(5);
         return view('admin.manage_orders.returned',compact('orders'));
+    }
+
+    public function tacked_orders()
+    {
+        // returned orders
+        $orders=order::where('confirmation','=','accepte')->paginate(5);
+        return view('admin.manage_orders.tacked',compact('orders'));
     }
 
     /**
