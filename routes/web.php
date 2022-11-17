@@ -3,6 +3,7 @@
 use App\Models\order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\user\homeController;
 use App\Http\Controllers\admin\foodController;
 use App\Http\Controllers\user\FoodsController;
@@ -13,10 +14,10 @@ use App\Http\Controllers\admin\adminhomeController;
 use App\Http\Controllers\admin\CategorieController;
 use App\Http\Controllers\livreur\profileController;
 use App\Http\Controllers\user\categoriesController;
+use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\admin\manageadminController;
 use App\Http\Controllers\livreur\livreurOrdersController;
 use App\Http\Controllers\user\homeController as UserHomeController;
-use App\Http\Controllers\user\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +87,5 @@ Route::prefix('livreur')->middleware(['livreur'])->group(function(){
     Route::get('/message', [homeController::class,'message'])->name('message');
     Route::post('/send_message', [homeController::class,'send_message'])->name('send_message');
 // USER ROUTES (ends here)
+
+Route::get('send-mail', [MailController::class, 'index']);
