@@ -2,15 +2,15 @@
 
 @section('main')
     @if (session('error'))
-        <div class="alert alert-danger" role="alert">
+        <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
             {{session('error')}}
         </div>
     @endif
 
     @if (session('message'))
-        <div class="alert alert-danger" role="alert">
-            {{session('message')}}
-        </div>
+    <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+        {{session('message')}}
+    </div>
     @endif
 
     @include('user.sections.home.header')

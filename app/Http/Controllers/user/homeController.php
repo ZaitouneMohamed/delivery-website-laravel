@@ -15,10 +15,8 @@ class homeController extends Controller
     public function index()
     {
         $categories=Categorie::all();
-        $categorie1 = DB::table('categories')->where('title','pizza')->first();
         $categorie2 = DB::table('categories')->where('title','burger')->first();
-        $categorie3 = DB::table('categories')->where('title','tacos')->first();
-        return view('user.home',compact('categorie1','categorie2','categorie3','categories'));
+        return view('user.home',compact('categorie2','categories'));
     }
 
     public function fill_categorie(){
