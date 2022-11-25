@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Categorie;
+use App\Models\Food;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -131,7 +132,10 @@ class CategorieController extends Controller
     {
         $categorie=Categorie::find($id);
         unlink(public_path('/categories').'/'.$categorie->image);
+        $foods = Food::where('categorie_id',$id);
         $categorie->delete();
+        unlink(public_path('/foods').'/'.$foods->image);
+        $foods->delete();
         return redirect()->route('categorie.index')->with([
             'success' => "categorie est supprimé"
         ]);

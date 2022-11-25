@@ -69,7 +69,7 @@ Route::prefix('livreur')->middleware(['livreur'])->group(function(){
         Route::get('/livreur_request', [livreurOrdersController::class , 'request'])->name('livreur_orders_request');
         Route::get('/accepte_request/{id}', [livreurOrdersController::class , 'confirm_request'])->name('livreur_accepte_request');
         Route::get('/refuse_request/{id}', [livreurOrdersController::class , 'refuse_request'])->name('livreur_refuse_order');
-        Route::get('/return_order/{id}', [livreurOrdersController::class , 'return_order'])->name('livreur_return_order');
+        Route::post('/return_order/{id}', [livreurOrdersController::class , 'return_order'])->name('livreur_return_order');
 });
 // LIVREUR ROUTES (ends here)
 

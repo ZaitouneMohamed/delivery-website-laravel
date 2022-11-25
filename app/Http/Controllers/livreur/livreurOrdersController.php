@@ -5,6 +5,7 @@ namespace App\Http\Controllers\livreur;
 use App\Models\order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class livreurOrdersController extends Controller
 {
@@ -52,8 +53,7 @@ class livreurOrdersController extends Controller
      */
     public function create()
     {
-        $livreur=auth()->user()->id;
-        $orders=order::where('livreur_id','=',$livreur)->where('confirmation','=',"accepte")->paginate(5);
+        $orders=order::where('livreur_id','=',auth()->user()->id)->where('confirmation','=',"accepte")->paginate(5);
         return view ('livreur.my_orders',compact('orders'));
     }
 
@@ -65,7 +65,6 @@ class livreurOrdersController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $order=order::find($request->order_id);
         $order->update([
             'livreur_id' =>Auth()->user()->id,
@@ -118,16 +117,16 @@ class livreurOrdersController extends Controller
     }
 
     public function return_order(Request $request, $id){
-        // dd($request->all());
         $order=order::find($id);
         $order->update([
             'livreur_id' => Null,
             'status' => 'returned',
             'confirmation' => "returned",
             'is_returned' => 'yes',
-            'raison_of_return' => $request->raison,
+            'raison_return' => $request->raison ,
         ]);
-        return view('livreur.my_orders');
+        return Redirect()->route('livreur.home');
+        // dd($request->all());
     }
 
     /**
