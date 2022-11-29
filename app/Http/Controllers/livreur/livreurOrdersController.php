@@ -122,8 +122,7 @@ class livreurOrdersController extends Controller
             'livreur_id' => Null,
             'status' => 'returned',
             'confirmation' => "returned",
-            'is_returned' => 'yes',
-            'raison_return' => $request->raison ,
+            'raison_return' => $request->raison
         ]);
         return Redirect()->route('livreur.home');
         // dd($request->all());

@@ -1,5 +1,16 @@
 @extends('user.layout.layout')
 
+
+@if ($foods->count()==0)
+    @section('style')
+        <style>
+            #div {
+                height: calc(100vh - 140px)
+            }
+        </style>
+    @endsection
+@endif
+
 @section('main')
 @if (session('error'))
     <div class="alert alert-danger" role="alert">

@@ -29,19 +29,19 @@
                             <h1 class="modal-title fs-5" id="exampleModalLabel">why you want to return this order</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <form method="post" action="{{ route('livreur_return_order', $order->id) }}">
-                                @csrf
-                                @method('POST')
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text" name="raison"></textarea>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Send message</button>
-                        </div>
+                        <form method="post" action="{{route('livreur_return_order', $order->id)}}">
+                            <div class="modal-body">
+                                    @csrf
+                                    @method('POST')
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Message:</label>
+                                        <textarea class="form-control" id="message-text" name="raison"></textarea>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" value="Send" class="btn btn-primary" >
+                            </div>
                         </form>
                     </div>
                 </div>
