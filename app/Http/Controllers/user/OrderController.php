@@ -49,9 +49,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $food=food::find($request->id);
         $total= $food->price * $request->qty;
+        
         if ($request->has('adresse')) {
             $user=User::find(Auth()->user()->id);
             $user->update([
@@ -64,7 +64,6 @@ class OrderController extends Controller
             'food_id'=>$food->id,
             'qty'=>$request->qty,
             'total'=>$total,
-            'order_date'=>now(),
             'livreur_id'=>Null,
             'status'=>'on load',
             'confirmation'=>'nothing'
