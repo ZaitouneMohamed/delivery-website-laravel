@@ -49,7 +49,6 @@ class CategorieController extends Controller
         if ($request->has('image')) {
             $file = $request ->image;
             $image_name = time() . '_' . $file->getClientOriginalName();
-            // $file->move('/storage/categorie');
             $file->move(public_path('categories'),$image_name);
         }
         Categorie::create([
@@ -96,7 +95,6 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-         // dd($request->all());
         $categorie=categorie::find($id);
         $request->validate([
             'title' => "required|min:8",
@@ -111,6 +109,7 @@ class CategorieController extends Controller
             unlink(public_path('/categories').'/'.$categorie->image);
             $categorie->image=$image_name;
         }
+        
         $categorie->update([
             'title' => $request->title,
             'image' => $image_name,
