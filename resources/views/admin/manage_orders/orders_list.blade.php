@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('plugins.Datatables',true)
+
 @section('content')
     <div class="container">
         @if (session()->has('success'))
@@ -10,11 +12,11 @@
 
         <h1>all orders</h1>
 
-        <table class="table table-dark table-hover ">
+        <table class="table table-dark table-hover" id="mytable">
             <thead>
                 <tr>
                     <th scope="col">title</th>
-                    <th scope="col">food title</th>
+                    <th scope="col">food</th>
                     <th scope="col">image</th>
                     <th scope="col">price</th>
                     <th scope="col">adresse</th>
@@ -50,15 +52,27 @@
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                {{-- <input type="submit" value="delete" class="btn btn-danger"> --}}
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <div class="container">
+        {{-- <div class="container">
             {{ $orders->links() }}
-        </div>
+        </div> --}}
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+            $('#mytable').DataTable({
+                dom : 'Bfrtip',
+                buttons : [
+                    'copy','excel','pdf','csv','print','colvis',
+                ]
+            })
+        });
+    </script>
 @endsection

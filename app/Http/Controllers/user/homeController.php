@@ -28,7 +28,7 @@ class homeController extends Controller
         $categories = Categorie::all();
         return view('user.message',compact('categories'));
     }
-
+    
     public function send_message(Request $request){
         if ($request->has('name')) {
             $request->validate([

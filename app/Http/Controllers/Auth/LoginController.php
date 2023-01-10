@@ -52,7 +52,7 @@ class LoginController extends Controller
             }else if(auth()->user()->role == 2){
                 return redirect()->route('livreur.home');
             }else{
-                return back();
+                return redirect()->back();
             }
         }else{
             return redirect()->route('login')
