@@ -21,10 +21,10 @@ return new class extends Migration
             $table->integer('total');
             $table->date('order_date');
             $table->string('status')->default('on_load');
-            $table->integer('livreur_id')->usigned()->default(Null);
-            $table->string('confirmation')->default(Null);
-            $table->string('is_returned')->default(Null);
-            $table->string('raison_return')->default(Null);
+            $table->integer('livreur_id')->usigned()->nullable();
+            $table->string('confirmation')->nullable();
+            $table->string('is_returned')->nullable();
+            $table->string('raison_return')->nullable();
             $table->timestamps();
         });
     }

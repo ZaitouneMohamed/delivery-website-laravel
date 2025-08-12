@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use auth;
-use App\Models\food;
+use App\Models\Food;
 use App\Models\User;
 use App\Models\order;
 use App\Models\Categorie;
@@ -37,7 +37,7 @@ class OrderController extends Controller
 
     public function add_order($id){
         $categories = Categorie::all();
-        $food=food::find($id);
+        $food=Food::find($id);
         return view('user.order',compact('food','categories'));
     }
 
@@ -51,7 +51,7 @@ class OrderController extends Controller
     {
         $food=food::find($request->id);
         $total= $food->price * $request->qty;
-        
+
         if ($request->has('adresse')) {
             $user=User::find(Auth()->user()->id);
             $user->update([
@@ -64,9 +64,12 @@ class OrderController extends Controller
             'food_id'=>$food->id,
             'qty'=>$request->qty,
             'total'=>$total,
-            'livreur_id'=>Null,
+            'livreur_id'=>2,
             'status'=>'on load',
-            'confirmation'=>'nothing'
+            'confirmation'=>'nothing',
+            "order_date" => now(),
+            'is_returned'=>0,
+            'raison_return'=>"nothing"
         ]);
         return redirect()->route('add_order.index')->with([
             'message' => "order est bien ajouter"

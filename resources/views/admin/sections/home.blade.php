@@ -11,7 +11,7 @@
                     <div class="d-flex">
                         <div class="small-box bg-info m-3 w-75">
                             <div class="inner">
-                                <h2>{{ \App\Models\food::count() }}</h2>
+                                <h2>{{ \App\Models\Food::count() }}</h2>
                                 <h2>food</h2>
                             </div>
                             <div class="icon">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="small-box bg-info m-3 w-75">
                             <div class="inner">
-                                <h2>{{ \App\Models\categorie::count() }}</h2>
+                                <h2>{{ \App\Models\Categorie::count() }}</h2>
                                 <h2>categorie</h2>
                             </div>
                             <div class="icon">

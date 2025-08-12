@@ -49,7 +49,7 @@ class OrdersController extends Controller
             'livreur_id'=>$request->livreur_id
         ]);
         return view('admin.manage_orders.request')->with([
-            'success' => "wait for confirmation"
+            'success' => "wait for confirmation",
         ]);
     }
 
@@ -63,7 +63,7 @@ class OrdersController extends Controller
     {
         // show order
         $order=order::find($id);
-        $livreurs=User::all()->where('role',2)->where('adresse',$order->user->adresse);
+        $livreurs=User::all()->where('role',2);
         return view ('admin.manage_orders.show',compact('order','livreurs'));
     }
 

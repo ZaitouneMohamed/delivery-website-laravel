@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\food;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Food;
 
 class foodController extends Controller
 {
@@ -16,7 +16,7 @@ class foodController extends Controller
      */
     public function index()
     {
-        $foods=food::orderBy('id','desc')->paginate(5);
+        $foods = Food::orderBy('id','desc')->paginate(5);
         return view('admin.manage_food.home',compact('foods'));
     }
 

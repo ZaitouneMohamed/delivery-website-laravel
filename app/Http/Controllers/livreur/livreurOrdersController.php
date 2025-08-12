@@ -22,7 +22,7 @@ class livreurOrdersController extends Controller
 
     public function request(){
         $livreur_id=auth()->user()->id;
-        $orders=order::where('livreur_id','like',$livreur_id)->where('confirmation','=','wait for answer')->get();
+        $orders=order::where('livreur_id',$livreur_id)->where('confirmation','=','wait for answer')->get();
         return view('livreur.request',compact("orders"));
     }
 
